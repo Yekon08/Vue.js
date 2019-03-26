@@ -9,10 +9,7 @@
 <body>
     <h1>Test Vue.js</h1>
     <div id="app">
-        {{ course }} - {{ date }}
-        <img v-bind:src="url" alt="vue logo">
-        <input type="text" placeholder="nom :" v-model="name">
-        <p>Le nom rentré est : {{name}}</p>
+        
     </div>
     <!-- production version, optimized for size and speed -->
     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
@@ -20,10 +17,7 @@
         new Vue({
             el: '#app',
             data: {
-                course: 'Vue.js !',
-                date: Date.now(),
-                url: 'https://humancoders-formations.s3.amazonaws.com/uploads/course/logo/104/thumb_bigger_formation-vue-js.png',
-                name: ''
+
             }
         })
     </script>
