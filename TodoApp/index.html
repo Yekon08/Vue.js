@@ -5,19 +5,44 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Test Vue.js</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <h1>Test Vue.js</h1>
     <div id="app">
-        
+        <h2>{{title}}</h2>
+        <form v-on:submit.prevent="addTask()">
+            <input type="text" placeholder="tâche à effectuer" v-model="task">
+            <button type="submit">ajouter</button>
+        </form>
+
+        <ul>
+            <li 
+                v-bind:class="{completed: task.done}"
+                v-on:click="task.done = !task.done"
+                v-for="task in tasks">{{task.description}}
+            </li>
+        </ul>
     </div>
+
     <!-- production version, optimized for size and speed -->
     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
     <script>
-        new Vue({
+        Vue.config.devtools = true;
+
+        var vm = new Vue({
             el: '#app',
             data: {
-
+                title: 'A faire :',
+                task: null,
+                tasks: []
+            },
+            methods: {
+                addTask: function(event){
+                    this.tasks.push({id: Date.now(), description: this.task, done: false})
+                    console.log('tasks', this.tasks)
+                    this.task = null;
+                }
             }
         })
     </script>
