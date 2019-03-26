@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Test Vue.js</title>
+</head>
+<body>
+    <h1>Test Vue.js</h1>
+    <div id="app">
+        {{ course }} - {{ date }}
+        <img v-bind:src="url" alt="vue logo">
+    </div>
+    <!-- production version, optimized for size and speed -->
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                course: 'Vue.js !',
+                date: Date.now(),
+                url: 'https://humancoders-formations.s3.amazonaws.com/uploads/course/logo/104/thumb_bigger_formation-vue-js.png'
+
+            }
+        })
+    </script>
+</body>
+</html>
