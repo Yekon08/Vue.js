@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <title>Lifecycle hooks</title>
+</head>
+<body>
+    <div id="app">
+        <h1>{{title}}</h1>
+        <ul>
+            <li v-for="user in users">{{user.username}}</li>
+        </ul>
+    </div>
+    
+    <!-- production version, optimized for size and speed -->
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+
+    <script>
+        Vue.config.devtools = true;
+
+        var vm = new Vue({
+           el: '#app',
+           data: {
+               title: 'Users :',
+               usersUrl: 'https://jsonplaceholder.typicode.com/users',
+               users: []
+           },
+           created: function() {
+            axios.get(this.usersUrl)
+                  .then(function(res){
+                      vm.users = res.data
+                  })
+           }
+        }) 
+    </script>
+</body>
+</html>

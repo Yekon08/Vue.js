@@ -10,7 +10,8 @@
 <body>
     <div id="app">
         <global-cmp></global-cmp>
-        <cmp></cmp>
+        <cmp msg="test de texte" color="bleu"></cmp>
+        <cmp v-bind:msg="message"></cmp>
     </div>
     
 
@@ -22,12 +23,18 @@
             template: '<div>composant global test</div>'
         })
 
-        var cmp = { template: '<p>composant local</p>' }
+        var cmp = { 
+            template: '<p>composant local {{msg}} couleur: {{color}}</p>',
+            props: ['msg', 'color']
+        }
 
         Vue.config.devtools = true;
         var vm = new Vue({
             el: '#app',
-            components: { 'cmp': cmp }
+            components: { 'cmp': cmp },
+            data: {
+                message: 'test props'
+            },
         })
     </script>
 </body>
