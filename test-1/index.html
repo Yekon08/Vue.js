@@ -11,16 +11,19 @@
     <div id="app">
         {{ course }} - {{ date }}
         <img v-bind:src="url" alt="vue logo">
+        <input type="text" placeholder="nom :" v-model="name"> {{name}}
     </div>
     <!-- production version, optimized for size and speed -->
     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
     <script>
+        Vue.config.devtools = true
         new Vue({
             el: '#app',
             data: {
                 course: 'Vue.js !',
                 date: Date.now(),
-                url: 'https://humancoders-formations.s3.amazonaws.com/uploads/course/logo/104/thumb_bigger_formation-vue-js.png'
+                url: 'https://humancoders-formations.s3.amazonaws.com/uploads/course/logo/104/thumb_bigger_formation-vue-js.png',
+                name: ''
 
             }
         })
