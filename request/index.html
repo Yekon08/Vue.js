@@ -11,7 +11,7 @@
     <div id="app">
         <h1>{{title}}</h1>
         <ul>
-            <li v-for="user in users">{{user.username}}</li>
+            <user-list v-bind:data="users"></user-list>
         </ul>
     </div>
     
@@ -20,6 +20,14 @@
 
     <script>
         Vue.config.devtools = true;
+
+        Vue.component('user-list', {
+            template: '<div>\
+            <ul><li v-for="user in data">{{user.username}}</li></ul>\
+            </div>',
+            props: ['data']
+
+        })
 
         var vm = new Vue({
            el: '#app',
